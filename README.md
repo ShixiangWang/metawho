@@ -150,7 +150,7 @@ forest(res$subgroup$model, showweights = TRUE, atransf = exp,
        xlab = "Hazard ratio")
 op = par(no.readonly = TRUE)
 par(cex = 0.75, font = 2)
-text(-11.5, 4.5, "Trial(s) and subgroup", pos = 4)
+text(-11.5, 4.5, "Trial(s)", pos = 4)
 text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 ```
 
