@@ -104,7 +104,7 @@ text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 par(op)
 ```
 
-This reproduce Figure 5 of reference #2. Of note, currently **metawho** only support HR values. More usage about model fit, prediction and plotting please refer to [metafor package](https://github.com/wviechtb/metafor).
+This reproduce Figure 5 of reference #1. Of note, currently **metawho** only support HR values. More usage about model fit, prediction and plotting please refer to [metafor package](https://github.com/wviechtb/metafor).
 
 ## References
 
