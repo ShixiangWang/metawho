@@ -12,7 +12,7 @@ status](https://codecov.io/gh/ShixiangWang/metawho/branch/master/graph/badge.svg
 
 The goal of **metawho** is to provide simple R implementation of
 “Meta-analytical method to Identify Who Benefits Most from Treatments”
-(called ‘deft’ approach, see [reference \#2](#references).
+(called ‘deft’ approach, see [reference \#2](#references)).
 
 **metawho** is powered by R package **metafor** and does not support
 dataset contains individuals for now. Please use stata package
