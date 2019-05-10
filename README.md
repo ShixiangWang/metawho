@@ -30,7 +30,8 @@ remotes::install_github("ShixiangWang/metawho")
 
 This is a basic example which shows you how to solve a common problem.
 
-Load example data.
+If you have HR and confidence intervals, please run `deft_prepare()`
+firstly.
 
 ``` r
 library(metawho)
@@ -38,6 +39,55 @@ library(metawho)
 #> Loading required package: Matrix
 #> Loading 'metafor' package (version 2.0-0). For an overview 
 #> and introduction to the package please type: help(metafor).
+
+### specify hazard ratios (hr)
+hr    <- c(0.30, 0.11, 1.25, 0.63, 0.90, 0.28)
+### specify lower bound for hr confidence intervals
+ci.lb <- c(0.09, 0.02, 0.82, 0.42, 0.41, 0.12)
+### specify upper bound for hr confidence intervals
+ci.ub <- c(1.00, 0.56, 1.90, 0.95, 1.99, 0.67)
+### trials
+trial <- c("Rizvi 2015", "Rizvi 2015",
+          "Rizvi 2018", "Rizvi 2018",
+          "Hellmann 2018", "Hellmann 2018")
+### subgroups
+subgroup = rep(c("Male", "Female"), 3)
+
+entry <- paste(trial, subgroup, sep = "-")
+### combine as data.frame
+
+wang2019 =
+   data.frame(
+        entry = entry,
+        trial = trial,
+        subgroup = subgroup,
+        hr = hr,
+        ci.lb = ci.lb,
+        ci.ub = ci.ub,
+        stringsAsFactors = FALSE
+       )
+
+deft_prepare(wang2019)
+#>                  entry         trial subgroup   hr ci.lb ci.ub   conf_q
+#> 1      Rizvi 2015-Male    Rizvi 2015     Male 0.30  0.09  1.00 1.959964
+#> 2    Rizvi 2015-Female    Rizvi 2015   Female 0.11  0.02  0.56 1.959964
+#> 3      Rizvi 2018-Male    Rizvi 2018     Male 1.25  0.82  1.90 1.959964
+#> 4    Rizvi 2018-Female    Rizvi 2018   Female 0.63  0.42  0.95 1.959964
+#> 5   Hellmann 2018-Male Hellmann 2018     Male 0.90  0.41  1.99 1.959964
+#> 6 Hellmann 2018-Female Hellmann 2018   Female 0.28  0.12  0.67 1.959964
+#>           yi       sei
+#> 1 -1.2039728 0.6142831
+#> 2 -2.2072749 0.8500678
+#> 3  0.2231436 0.2143674
+#> 4 -0.4620355 0.2082200
+#> 5 -0.1053605 0.4030005
+#> 6 -1.2729657 0.4387290
+```
+
+Here we load example data.
+
+``` r
+library(metawho)
 data("wang2019")
 
 wang2019
@@ -134,13 +184,14 @@ Use `deft_do()` function to obtain model results.
 #> [1] "deft"
 ```
 
-Plot the results with `forest()` function from **metafor** package.
+Plot the model results with `forest()` function from **metafor**
+package.
 
 ``` r
 forest(res$subgroup$model, showweights = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 Modify plot, more see `?forest.rma`.
 
@@ -154,7 +205,7 @@ text(-11.5, 4.5, "Trial(s)", pos = 4)
 text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 par(op)
