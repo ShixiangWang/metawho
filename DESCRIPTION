@@ -1,21 +1,22 @@
 Package: metawho
 Type: Package
-Title: Meta-analytical Methods Implementation to Identify Who Benefits Most from Treatments
+Title: Meta-analytical Implementation to Identify Who Benefits Most from Treatments
 Version: 0.1.0
 Author: Shixiang Wang
 Maintainer: Shixiang Wang <w_shixiang@163.com>
-Description: Identifying which individuals benefit most from particular 
-    treatments or other interventions underpins so-called personalised or 
-    stratified medicine.
-    This package provide functions to easily implement subgroup analysis 
-    with Deluded approach (within-trial and across-trial interactions combined) 
-    or Deft approach (within-trial interaction alone).
-    For more detail, please see reference <Meta-analytical methods to identify 
-    who benefits most from treatments: daft, deluded, or deft approach?>.
+Description: Provides functions for implementing Deft approach 
+    (see \doi{10.1136/bmj.j573}) and visualizing models.
+Suggests: 
+    testthat,
+    covr
+Depends: R (>= 3.5), metafor
+Imports: 
+    stats,
+    dplyr,
+    purrr,
+    magrittr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
-Suggests: testthat
-Depends: metafor,
-    stats
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)

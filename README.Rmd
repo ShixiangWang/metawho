@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# metawho
+
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ShixiangWang/metawho?branch=master&svg=true)](https://ci.appveyor.com/project/ShixiangWang/metawho) [![Travis build status](https://travis-ci.org/ShixiangWang/metawho.svg?branch=master)](https://travis-ci.org/ShixiangWang/metawho) [![Coverage status](https://codecov.io/gh/ShixiangWang/metawho/branch/master/graph/badge.svg)](https://codecov.io/github/ShixiangWang/metawho?branch=master)
+
+The goal of **metawho** is to provide simple R implementation of "Meta-analytical method to Identify Who Benefits Most from Treatments" (called 'deft' approach, see [reference #2](#references).
+
+**metawho** is powered by R package **metafor** and does not support dataset contains individuals for now. Please use stata package **ipdmetan** if you are more familar with stata code.
+
+## Installation
+
+You can install the development version of **metawho** from GitHub with:
+
+``` r
+remotes::install_github("ShixiangWang/metawho")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem.
+
+Load example data.
+
+```{r load_wang2019}
+library(metawho)
+data("wang2019")
+
+wang2019
+```
+
+Use `deft_do()` function to obtain model results.
+
+```{r}
+# The 'Male' is the reference
+(res = deft_do(wang2019, group_level = c("Male", "Female")))
+```
+
+Plot the results with `forest()` function from **metafor** package.
+
+```{r}
+forest(res$subgroup$model, showweights = TRUE)
+```
+
+Modify plot, more see `?forest.rma`.
+
+```{r}
+forest(res$subgroup$model, showweights = TRUE, atransf = exp, 
+       slab = res$subgroup$data$trial,
+       xlab = "Hazard ratio")
+op = par(no.readonly = TRUE)
+par(cex = 0.75, font = 2)
+text(-11.5, 4.5, "Trial(s) and subgroup", pos = 4)
+text(9, 4.5, "Hazard Risk [95% CI]", pos = 2)
+par(op)
+```
+
+
+## References
+
+-  Wang, Shixiang, et al. "The predictive power of tumor mutational burden in lung cancer immunotherapy response is influenced by patients' sex." International journal of cancer (2019).
+- Fisher, David J., et al. "Meta-analytical methods to identify who benefits most from treatments: daft, deluded, or deft approach?." bmj 356 (2017): j573.
