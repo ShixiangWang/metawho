@@ -3,6 +3,8 @@
 
 # metawho
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/ShixiangWang/metawho?branch=master&svg=true)](https://ci.appveyor.com/project/ShixiangWang/metawho)
 [![Travis build
@@ -117,30 +119,15 @@ Use `deft_do()` function to obtain model results.
 #> 
 #> $all$model
 #> 
-#> Fixed-Effects with Moderators Model (k = 6)
+#> Fixed-Effects Model (k = 6)
 #> 
-#> Test for Residual Heterogeneity: 
-#> QE(df = 0) = 0.0000, p-val = 1.0000
-#> 
-#> Test of Moderators (coefficient(s) 1:6): 
-#> QM(df = 6) = 25.0790, p-val = 0.0003
+#> Test for Heterogeneity: 
+#> Q(df = 5) = 18.8872, p-val = 0.0020
 #> 
 #> Model Results:
 #> 
-#>                            estimate      se     zval    pval    ci.lb
-#> entryHellmann 2018-Female   -1.2730  0.4387  -2.9015  0.0037  -2.1328
-#> entryHellmann 2018-Male     -0.1054  0.4030  -0.2614  0.7937  -0.8952
-#> entryRizvi 2015-Female      -2.2073  0.8501  -2.5966  0.0094  -3.8733
-#> entryRizvi 2015-Male        -1.2040  0.6143  -1.9600  0.0500  -2.4079
-#> entryRizvi 2018-Female      -0.4620  0.2082  -2.2190  0.0265  -0.8701
-#> entryRizvi 2018-Male         0.2231  0.2144   1.0410  0.2979  -0.1970
-#>                              ci.ub    
-#> entryHellmann 2018-Female  -0.4131  **
-#> entryHellmann 2018-Male     0.6845    
-#> entryRizvi 2015-Female     -0.5412  **
-#> entryRizvi 2015-Male       -0.0000   *
-#> entryRizvi 2018-Female     -0.0539   *
-#> entryRizvi 2018-Male        0.6433    
+#> estimate      se     zval    pval    ci.lb    ci.ub   
+#>  -0.3207  0.1289  -2.4883  0.0128  -0.5732  -0.0681  *
 #> 
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
@@ -160,20 +147,15 @@ Use `deft_do()` function to obtain model results.
 #> 
 #> $subgroup$model
 #> 
-#> Fixed-Effects with Moderators Model (k = 3)
+#> Fixed-Effects Model (k = 3)
 #> 
-#> Test for Residual Heterogeneity: 
-#> QE(df = 0) = 0.0000, p-val = 1.0000
-#> 
-#> Test of Moderators (coefficient(s) 1:3): 
-#> QM(df = 3) = 10.0137, p-val = 0.0185
+#> Test for Heterogeneity: 
+#> Q(df = 2) = 0.5657, p-val = 0.7536
 #> 
 #> Model Results:
 #> 
-#>                     estimate      se     zval    pval    ci.lb    ci.ub   
-#> trialHellmann 2018   -1.1676  0.5957  -1.9600  0.0500  -2.3352  -0.0000  *
-#> trialRizvi 2015      -1.0033  1.0488  -0.9566  0.3387  -3.0589   1.0522   
-#> trialRizvi 2018      -0.6852  0.2988  -2.2928  0.0219  -1.2709  -0.0995  *
+#> estimate      se     zval    pval    ci.lb    ci.ub    
+#>  -0.7956  0.2589  -3.0738  0.0021  -1.3030  -0.2883  **
 #> 
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
@@ -201,7 +183,7 @@ forest(res$subgroup$model, showweights = TRUE, atransf = exp,
        xlab = "Hazard ratio")
 op = par(no.readonly = TRUE)
 par(cex = 0.75, font = 2)
-text(-11.5, 4.5, "Trial(s)", pos = 4)
+text(-11, 4.5, "Trial(s)", pos = 4)
 text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 ```
 
@@ -210,6 +192,11 @@ text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 ``` r
 par(op)
 ```
+
+This reproduce Figure 5 of reference \#2. Of note, currently **metawho**
+only support HR values. More usage about model fit, prediction and
+plotting please refer to [metafor
+package](https://github.com/wviechtb/metafor).
 
 ## References
 

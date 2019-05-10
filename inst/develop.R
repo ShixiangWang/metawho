@@ -1,6 +1,6 @@
 data("wang2019")
 
-res = deft_do(wang2019, group_level = c("Male", "Female"))
+res = deft_do(wang2019, group_level = c("Male", "Female"), method = "FE")
 
 forest(res$all$model,
        slab = res$all$data$entry, atransf = exp, xlab="Hazard ratio", showweights = TRUE,
@@ -29,3 +29,8 @@ forest(res2)
 op <- par(xpd=TRUE)
 text(x=-8.5, y=-1:16, -1:16, pos=4, cex=.5)
 par(op)
+
+
+res$subgroup$data
+fit <- rma(yi = yi, sei=sei, data = res$subgroup$data)
+forest(fit, atransf = exp)

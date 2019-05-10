@@ -144,11 +144,11 @@ deft_do = function(prepare, group_level, method = "FE") {
     prepare[["subgroup"]] = factor(prepare[["subgroup"]], levels = group_level)
     before = list()
     before[["data"]] = prepare
-    before[["model"]] = rma(yi ~ entry + 0, sei = sei, data = prepare, method = method)
+    before[["model"]] = rma(yi = yi, sei = sei, data = prepare, method = method)
     # Step 1:
     # divide trial into groups and build models
     model_list = prepare %>% split(.$trial) %>%
-        purrr::map(~rma(yi ~ subgroup, sei = sei, data = ., method = method))
+        purrr::map(~rma(yi ~ subgroup, sei = sei, data = ., method = "FE")) # Only can use FE here?
 
     # Step 2:
     # pool results from Step 1
@@ -164,7 +164,7 @@ deft_do = function(prepare, group_level, method = "FE") {
         )
     })
     after[["data"]] = deft_prepare(after[["data"]])
-    after[["model"]] = rma(yi ~ trial + 0, sei = sei,
+    after[["model"]] = rma(yi = yi, sei = sei,
                            data = after[["data"]], method = method)
 
     res = list()
