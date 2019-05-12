@@ -179,5 +179,5 @@ deft_do = function(prepare, group_level, method = "FE") {
 
 #-----------------
 utils::globalVariables(
-    c(".", "ci.lb", "ci.ub", "conf_q", "hr", "sei", "subgroup", "trial")
+    c(".", "ci.lb", "ci.ub", "conf_q", "hr", "yi", "sei", "subgroup", "trial")
 )

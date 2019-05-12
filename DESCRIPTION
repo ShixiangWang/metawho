@@ -4,11 +4,13 @@ Title: Meta-analytical Implementation to Identify Who Benefits Most from Treatme
 Version: 0.1.0
 Author: Shixiang Wang
 Maintainer: Shixiang Wang <w_shixiang@163.com>
-Description: Provides functions for implementing Deft approach 
+Description: Provides functions for implementing so called 'deft' approach 
     (see \doi{10.1136/bmj.j573}) and visualizing models.
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 Depends: R (>= 3.5), metafor
 Imports: 
     stats,
@@ -20,3 +22,4 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
