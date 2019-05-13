@@ -1,11 +1,11 @@
 Package: metawho
 Type: Package
-Title: Meta-analytical Implementation to Identify Who Benefits Most from Treatments
+Title: Meta-Analytical Implementation to Identify Who Benefits Most from Treatments
 Version: 0.1.0
 Author: Shixiang Wang
 Maintainer: Shixiang Wang <w_shixiang@163.com>
-Description: Provides functions for implementing so called 'deft' approach 
-    (see \doi{10.1136/bmj.j573}) and visualizing models.
+Description: A tool for implementing so called 'deft' approach 
+    (see Fisher, David J., et al. (2017) <DOI:10.1136/bmj.j573>) and model visualization.
 Suggests: 
     testthat,
     covr,
