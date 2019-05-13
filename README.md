@@ -3,6 +3,9 @@
 
 # metawho
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/metawho)](https://cran.r-project.org/package=metawho)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/metawho?color=blue)](https://cran.r-project.org/package=metawho)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![AppVeyor build

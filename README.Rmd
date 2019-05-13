@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # metawho
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ShixiangWang/metawho?branch=master&svg=true)](https://ci.appveyor.com/project/ShixiangWang/metawho) [![Travis build status](https://travis-ci.org/ShixiangWang/metawho.svg?branch=master)](https://travis-ci.org/ShixiangWang/metawho) [![Coverage status](https://codecov.io/gh/ShixiangWang/metawho/branch/master/graph/badge.svg)](https://codecov.io/github/ShixiangWang/metawho?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/metawho)](https://cran.r-project.org/package=metawho) [![](http://cranlogs.r-pkg.org/badges/grand-total/metawho?color=blue)](https://cran.r-project.org/package=metawho) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ShixiangWang/metawho?branch=master&svg=true)](https://ci.appveyor.com/project/ShixiangWang/metawho) [![Travis build status](https://travis-ci.org/ShixiangWang/metawho.svg?branch=master)](https://travis-ci.org/ShixiangWang/metawho) [![Coverage status](https://codecov.io/gh/ShixiangWang/metawho/branch/master/graph/badge.svg)](https://codecov.io/github/ShixiangWang/metawho?branch=master)
 
 The goal of **metawho** is to provide simple R implementation of "Meta-analytical method to Identify Who Benefits Most from Treatments" (called 'deft' approach, see [reference #2](#references)).
 
