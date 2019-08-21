@@ -14,6 +14,7 @@ Depends:
     R (>= 3.5)
 Imports: 
     dplyr,
+    forestmodel,
     magrittr,
     purrr,
     stats,
@@ -24,6 +25,8 @@ Suggests:
     rmarkdown,
     testthat,
     roxygen2
+remotes:
+    ShixiangWang/forestmodel
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
