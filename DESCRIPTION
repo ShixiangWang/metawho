@@ -2,7 +2,7 @@ Type: Package
 Package: metawho
 Title: Meta-Analytical Implementation to Identify Who Benefits
     Most from Treatments
-Version: 0.1.0
+Version: 0.2.0
 Author: Shixiang Wang
 Maintainer: Shixiang Wang <w_shixiang@163.com>
 Description: A tool for implementing so called 'deft' approach
@@ -16,12 +16,14 @@ Imports:
     dplyr,
     magrittr,
     purrr,
-    stats
+    stats,
+    rlang (>= 0.1.2)
 Suggests: 
     covr,
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    roxygen2
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

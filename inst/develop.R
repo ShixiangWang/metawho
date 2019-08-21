@@ -1,36 +1,43 @@
-data("wang2019")
+library(metawho)
+#> Loading required package: metafor
+#> Loading required package: Matrix
+#> Loading 'metafor' package (version 2.0-0). For an overview
+#> and introduction to the package please type: help(metafor).
 
-res = deft_do(wang2019, group_level = c("Male", "Female"), method = "FE")
+### specify hazard ratios (hr)
+hr    <- c(0.30, 0.11, 1.25, 0.63, 0.90, 0.28)
+### specify lower bound for hr confidence intervals
+ci.lb <- c(0.09, 0.02, 0.82, 0.42, 0.41, 0.12)
+### specify upper bound for hr confidence intervals
+ci.ub <- c(1.00, 0.56, 1.90, 0.95, 1.99, 0.67)
+ni <- c(16L, 18L, 118L, 122L, 37L, 38L)
+### trials
+trial <- c("Rizvi 2015", "Rizvi 2015",
+           "Rizvi 2018", "Rizvi 2018",
+           "Hellmann 2018", "Hellmann 2018")
+### subgroups
+subgroup = rep(c("Male", "Female"), 3)
 
-forest(res$all$model,
-       slab = res$all$data$entry, atransf = exp, xlab="Hazard ratio", showweights = TRUE,
-       mlab = "overall")
-op = par(cex = 0.75, font = 2)
-text(-13, 7.5, "Trial(s) and subgroup", pos = 4)
-text(6, 15, "Relative Risk [95% CI]", pos = 2)
-par(op)
+entry <- paste(trial, subgroup, sep = "-")
+### combine as data.frame
 
-forest(res$subgroup$model, showweights = TRUE, atransf = exp)
+wang2019 =
+    data.frame(
+        entry = entry,
+        trial = trial,
+        subgroup = subgroup,
+        hr = hr,
+        ci.lb = ci.lb,
+        ci.ub = ci.ub,
+        ni = ni,
+        stringsAsFactors = FALSE
+    )
 
+library(metawho)
 
-res3 = rma(yi ~ trial + 0, sei = sei,
-           data = res$subgroup$data)
-
-summary(res)
-
-forest(res)
-
-funnel(res)
-
-
-res2 <- rma(measure="RR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=dat.bcg,
-           slab=paste(author, year, sep=", "))
-forest(res2)
-op <- par(xpd=TRUE)
-text(x=-8.5, y=-1:16, -1:16, pos=4, cex=.5)
-par(op)
-
-
-res$subgroup$data
-fit <- rma(yi = yi, sei=sei, data = res$subgroup$data)
-forest(fit, atransf = exp)
+pre = deft_prepare(wang2019)
+(res = deft_do(pre, group_level = c("Male", "Female")))
+library(forestmodel)
+debug(forest_rma)
+forestmodel::forest_rma(res$all$model, trans=exp)
+forestmodel::forest_rma(res$subgroup$model, trans=exp)
