@@ -34,6 +34,8 @@ remotes::install_github("ShixiangWang/metawho")
 
 This is a basic example which shows you how to solve a common problem.
 
+### Prepare data
+
 If you have HR and confidence intervals, please run `deft_prepare()` firstly.
 
 ```{r}
@@ -81,6 +83,8 @@ data("wang2019")
 wang2019
 ```
 
+### Do deft analysis
+
 Use `deft_do()` function to obtain model results.
 
 ```{r}
@@ -88,7 +92,14 @@ Use `deft_do()` function to obtain model results.
 (res = deft_do(wang2019, group_level = c("Male", "Female")))
 ```
 
-Plot the model results with `forest()` function from **metafor** package.
+### Show analysis result
+
+ToDo.
+
+## Combine with metafor
+
+The result of `deft_do()` contains models constructed by **metafor** package, so you can use features 
+provided by **metafor** package, e.g. plot the model results with `forest()` function from **metafor** package.
 
 ```{r, fig.width=7}
 forest(res$subgroup$model, showweights = TRUE)

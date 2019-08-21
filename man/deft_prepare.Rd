@@ -8,7 +8,8 @@ according to confidence level and distribution}
 deft_prepare(data, conf_level = 0.05)
 }
 \arguments{
-\item{data}{a \code{data.frame} contains at least columns 'trial', 'hr', 'ci.lb', 'ci.ub'.}
+\item{data}{a \code{data.frame} contains at least columns 'trial', 'hr', 'ci.lb',
+'ci.ub' and 'ni'.}
 
 \item{conf_level}{a number specify confidence level, default is 0.05.}
 }
