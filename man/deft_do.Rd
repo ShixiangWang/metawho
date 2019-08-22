@@ -29,7 +29,7 @@ studies. More details please see references.
 About model fit, please see \code{\link[metafor:rma]{metafor::rma()}}.
 }
 \examples{
-data('wang2019')
+data("wang2019")
 deft_do(wang2019, group_level = c("Male", "Female"))
 }
 \references{

@@ -94,7 +94,24 @@ Use `deft_do()` function to obtain model results.
 
 ### Show analysis result
 
-ToDo.
+Use `deft_show()` to visualize results.
+
+To show all entries without model result.
+
+```{r, fig.width=8}
+p1 = deft_show(res, element = "all")
+p1
+```
+
+To show result of subgroup analysis.
+
+```{r, fig.width=8}
+p2 = deft_show(res, element = "subgroup")
+p2
+```
+
+The analysis above reproduced Figure 5 of [reference #1](#references).
+
 
 ## Combine with metafor
 
@@ -118,7 +135,7 @@ text(9, 4.5, "Hazard Ratio [95% CI]", pos = 2)
 par(op)
 ```
 
-This reproduce Figure 5 of reference #1. Of note, currently **metawho** only support HR values. More usage about model fit, prediction and plotting please refer to [metafor package](https://github.com/wviechtb/metafor).
+More usage about model fit, prediction and plotting please refer to [metafor package](https://github.com/wviechtb/metafor).
 
 ## References
 

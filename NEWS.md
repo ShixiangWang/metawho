@@ -1,3 +1,8 @@
+# metawho 0.2.0
+
+* Fixed some small bugs.
+* Added `deft_show()` to show deft results.
+
 # metawho 0.1.0
 
 * Submitted to CRAN

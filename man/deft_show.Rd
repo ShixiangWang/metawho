@@ -4,8 +4,9 @@
 \alias{deft_show}
 \title{Show deft result}
 \usage{
-deft_show(deft, element, study_labels = NULL,
-  measure_label = "Hazard ratio", trans = base::exp,
+deft_show(deft, element, study_labels = NULL, headings = list(study =
+  ifelse(element == "all", "Study-subgroup", "Study"), n = "N", measure =
+  NULL, ci = "HR (95\% CI)"), trans = base::exp,
   show_model = ifelse(element == "all", FALSE, TRUE),
   show_stats = list(`I^2` = rlang::quo(sprintf("\%0.1f\%\%", I2)), p =
   rlang::quo(format.pval(QEp, digits = 2))), ...)
@@ -17,7 +18,7 @@ deft_show(deft, element, study_labels = NULL,
 
 \item{study_labels}{labels for studies.}
 
-\item{measure_label}{label for meature, e.g. 'HR'.}
+\item{headings}{a list for controlling plot headings.}
 
 \item{trans}{an optional transform function used on the numeric data for plotting the axes}
 
@@ -35,5 +36,12 @@ a \code{ggplot} object
 Show deft result
 }
 \examples{
-data('wang2019')
+data("wang2019")
+res <- deft_do(wang2019, group_level = c("Male", "Female"))
+
+p1 <- deft_show(res, "all")
+p1
+
+p2 <- deft_show(res, "subgroup")
+p2
 }
