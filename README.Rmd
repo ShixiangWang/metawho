@@ -30,67 +30,11 @@ You can install the development version of **metawho** from GitHub with:
 remotes::install_github("ShixiangWang/metawho")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem.
-
-If you have HR and confidence intervals, please run `deft_prepare()` firstly.
-
-```{r}
-library(metawho)
-
-### specify hazard ratios (hr)
-hr    <- c(0.30, 0.11, 1.25, 0.63, 0.90, 0.28)
-### specify lower bound for hr confidence intervals
-ci.lb <- c(0.09, 0.02, 0.82, 0.42, 0.41, 0.12)
-### specify upper bound for hr confidence intervals
-ci.ub <- c(1.00, 0.56, 1.90, 0.95, 1.99, 0.67)
-### specify sample number
-ni <- c(16L, 18L, 118L, 122L, 37L, 38L)
-### trials
-trial <- c("Rizvi 2015", "Rizvi 2015",
-          "Rizvi 2018", "Rizvi 2018",
-          "Hellmann 2018", "Hellmann 2018")
-### subgroups
-subgroup = rep(c("Male", "Female"), 3)
-
-entry <- paste(trial, subgroup, sep = "-")
-### combine as data.frame
-
-wang2019 =
-   data.frame(
-        entry = entry,
-        trial = trial,
-        subgroup = subgroup,
-        hr = hr,
-        ci.lb = ci.lb,
-        ci.ub = ci.ub,
-        ni = ni,
-        stringsAsFactors = FALSE
-       )
-
-deft_prepare(wang2019)
-```
-
-Here we load example data.
-
-```{r load_wang2019}
-library(metawho)
-data("wang2019")
-
-wang2019
-```
-
-Use `deft_do()` function to obtain model results.
-
-```{r}
-# The 'Male' is the reference
-(res = deft_do(wang2019, group_level = c("Male", "Female")))
-```
-
-For visualization and more, see package vignette.
+Or install stable release from CRAN.
 
 ## References
+
+If you use this package in academic field, please cite the following papers:
 
 -  Wang, Shixiang, et al. "The predictive power of tumor mutational burden in lung cancer immunotherapy response is influenced by patients' sex." International journal of cancer (2019).
 - Fisher, David J., et al. "Meta-analytical methods to identify who benefits most from treatments: daft, deluded, or deft approach?." bmj 356 (2017): j573.
