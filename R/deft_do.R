@@ -38,8 +38,8 @@ deft_do = function(prepare, group_level, method = "FE") {
         stop(msg)
     }
     if (! 'entry' %in% colnames(prepare)) {
-        prepare = dplyr::mutate(
-            entry = paste(trial, subgroup, sep = '-')
+        prepare = prepare %>%
+            dplyr::mutate(entry = paste(trial, subgroup, sep = '-')
         )
     }
 

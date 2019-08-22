@@ -36,7 +36,15 @@ wang2019 =
 library(metawho)
 
 pre = deft_prepare(wang2019)
-(res = deft_do(pre, group_level = c("Male", "Female")))
+(res = deft_do(pre, group_level = c("Male", "Female"), method = "DL"))
 library(forestmodel)
-forestmodel::forest_rma(res$all$model, trans=exp)
+forestmodel::forest_rma(list(res$all$model, res$subgroup$model), trans=exp,
+                        panels = default_forest_panels(res$all$model,
+                        factor_separate_line = factor_separate_line,
+                        measure = "HR"),
+                        model_label = c("What", "here")
+                        )
 forestmodel::forest_rma(res$subgroup$model, trans=exp)
+
+deft_show(res, "all")
+deft_show(res, "subgroup")
