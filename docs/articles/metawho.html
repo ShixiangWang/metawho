@@ -186,13 +186,13 @@
 <a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; $subgroup</span></a>
 <a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; $subgroup$data</span></a>
 <a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt;           trial        hr     ci.lb     ci.ub  ni   conf_q        yi</span></a>
-<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; 1 Hellmann 2018 0.3111111 0.0967900 1.0000013  75 1.959964 -1.167605</span></a>
-<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; 2    Rizvi 2015 0.3666667 0.0469397 2.8641945  34 1.959964 -1.003302</span></a>
-<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; 3    Rizvi 2018 0.5040000 0.2805772 0.9053338 240 1.959964 -0.685179</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; 1    Rizvi 2015 0.3666667 0.0469397 2.8641945  34 1.959964 -1.003302</span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; 2    Rizvi 2018 0.5040000 0.2805772 0.9053338 240 1.959964 -0.685179</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; 3 Hellmann 2018 0.3111111 0.0967900 1.0000013  75 1.959964 -1.167605</span></a>
 <a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt;         sei</span></a>
-<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt; 1 0.5957285</span></a>
-<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt; 2 1.0487893</span></a>
-<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; 3 0.2988460</span></a>
+<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt; 1 1.0487893</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt; 2 0.2988460</span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt; 3 0.5957285</span></a>
 <a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt; $subgroup$model</span></a>
 <a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt; </span></a>
@@ -217,26 +217,35 @@
 <div id="show-analysis-result" class="section level3">
 <h3 class="hasAnchor">
 <a href="#show-analysis-result" class="anchor"></a>Show analysis result</h3>
-<p>ToDo.</p>
+<p>Use <code><a href="../reference/deft_show.html">deft_show()</a></code> to visualize results.</p>
+<p>To show all entries without model result.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">p1 =<span class="st"> </span><span class="kw"><a href="../reference/deft_show.html">deft_show</a></span>(res, <span class="dt">element =</span> <span class="st">"all"</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">p1</a></code></pre></div>
+<p><img src="metawho_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p>To show result of subgroup analysis.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">p2 =<span class="st"> </span><span class="kw"><a href="../reference/deft_show.html">deft_show</a></span>(res, <span class="dt">element =</span> <span class="st">"subgroup"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">p2</a></code></pre></div>
+<p><img src="metawho_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+<p>The analysis above reproduced Figure 5 of <a href="#references">reference #1</a>.</p>
 </div>
 </div>
 <div id="combine-with-metafor" class="section level2">
 <h2 class="hasAnchor">
 <a href="#combine-with-metafor" class="anchor"></a>Combine with metafor</h2>
 <p>The result of <code><a href="../reference/deft_do.html">deft_do()</a></code> contains models constructed by <strong>metafor</strong> package, so you can use features provided by <strong>metafor</strong> package, e.g. plot the model results with <code>forest()</code> function from <strong>metafor</strong> package.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">forest</span>(res<span class="op">$</span>subgroup<span class="op">$</span>model, <span class="dt">showweights =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="metawho_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">forest</span>(res<span class="op">$</span>subgroup<span class="op">$</span>model, <span class="dt">showweights =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="metawho_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 <p>Modify plot, more see <code>?forest.rma</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">forest</span>(res<span class="op">$</span>subgroup<span class="op">$</span>model, <span class="dt">showweights =</span> <span class="ot">TRUE</span>, <span class="dt">atransf =</span> exp, </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">       <span class="dt">slab =</span> res<span class="op">$</span>subgroup<span class="op">$</span>data<span class="op">$</span>trial,</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">       <span class="dt">xlab =</span> <span class="st">"Hazard ratio"</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">op =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">cex =</span> <span class="fl">0.75</span>, <span class="dt">font =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/text">text</a></span>(<span class="op">-</span><span class="dv">11</span>, <span class="fl">4.5</span>, <span class="st">"Trial(s)"</span>, <span class="dt">pos =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/text">text</a></span>(<span class="dv">9</span>, <span class="fl">4.5</span>, <span class="st">"Hazard Ratio [95% CI]"</span>, <span class="dt">pos =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="metawho_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(op)</a></code></pre></div>
-<p>This reproduce Figure 5 of reference #1. Of note, currently <strong>metawho</strong> only support HR values. More usage about model fit, prediction and plotting please refer to <a href="https://github.com/wviechtb/metafor">metafor package</a>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">forest</span>(res<span class="op">$</span>subgroup<span class="op">$</span>model, <span class="dt">showweights =</span> <span class="ot">TRUE</span>, <span class="dt">atransf =</span> exp, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">       <span class="dt">slab =</span> res<span class="op">$</span>subgroup<span class="op">$</span>data<span class="op">$</span>trial,</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">       <span class="dt">xlab =</span> <span class="st">"Hazard ratio"</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">op =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(<span class="dt">cex =</span> <span class="fl">0.75</span>, <span class="dt">font =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/text">text</a></span>(<span class="op">-</span><span class="dv">11</span>, <span class="fl">4.5</span>, <span class="st">"Trial(s)"</span>, <span class="dt">pos =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/text">text</a></span>(<span class="dv">9</span>, <span class="fl">4.5</span>, <span class="st">"Hazard Ratio [95% CI]"</span>, <span class="dt">pos =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="metawho_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/par">par</a></span>(op)</a></code></pre></div>
+<p>More usage about model fit, prediction and plotting please refer to <a href="https://github.com/wviechtb/metafor">metafor package</a>.</p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
