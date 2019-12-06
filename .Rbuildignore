@@ -7,3 +7,5 @@
 ^\.Rproj\.user$
 ^CRAN-RELEASE$
 docs/
+^doc$
+^Meta$

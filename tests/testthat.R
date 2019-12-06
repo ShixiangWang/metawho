@@ -45,5 +45,12 @@ testthat::expect_s3_class(res, "deft")
 p1 <- deft_show(res, "all")
 p2 <- deft_show(res, "subgroup")
 
-testthat::expect_s3_class(p1, "ggplot")
-testthat::expect_s3_class(p2, "ggplot")
+pkg_version <- packageVersion("forestmodel")
+if (pkg_version$major == 0 & pkg_version$minor < 6) {
+  message("Please install the recent version of forestmodel firstly.")
+  message("Run the following command:")
+  message("  remotes::install_github(\"ShixiangWang/forestmodel\")")
+} else {
+  testthat::expect_s3_class(p1, "ggplot")
+  testthat::expect_s3_class(p2, "ggplot")
+}

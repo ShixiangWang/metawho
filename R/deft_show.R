@@ -6,9 +6,12 @@
 #' @param headings a list for controlling plot headings.
 #' @param ... other arguments except 'panels', 'trans', 'study_labels',
 #' and 'show_stats' passed to [forestmodel::forest_rma()].
+#' @param show_model a logical value, if `TRUE`, show model result, otherwise only show forest plots for studies
 #' @inheritParams forestmodel::forest_rma
 #'
 #' @return a `ggplot` object
+#' @importFrom utils packageVersion
+#' @author ShixiangWang <w_shixiang@163.com>
 #' @export
 #'
 #' @examples
@@ -35,6 +38,16 @@ deft_show <- function(deft, element, study_labels = NULL,
                       ),
                       ...) {
   stopifnot(inherits(deft, "deft"))
+  pkg_version <- packageVersion("forestmodel")
+
+  if (pkg_version$major == 0 & pkg_version$minor < 6) {
+    message("Please install the recent version of forestmodel firstly.")
+    message("Run the following command:")
+    message("  remotes::install_github(\"ShixiangWang/forestmodel\")")
+    return(invisible())
+  }
+
+
   df <- deft[[element]]
   if (is.null(study_labels)) {
     if (element == "all") {
@@ -99,5 +112,5 @@ deft_panel <- function(model = NULL, factor_separate_line = FALSE,
 }
 
 utils::globalVariables(
-  c("I2", "QEp", "conf.high", "conf.low", "estimate", "n", "stat", "study", "trans")
+  c("I2", "QEp", "conf.high", "conf.low", "estimate", "n", "stat", "study", "trans", "forest_panel")
 )

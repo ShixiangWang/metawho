@@ -1,5 +1,7 @@
 ---
 title: "metawho"
+author: "Shixiang Wang <w_shixiang@163.com>"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{metawho}
@@ -24,10 +26,22 @@ The goal of **metawho** is to provide simple R implementation of "Meta-analytica
 
 ## Installation
 
+You can install the stable release of **metawho** from CRAN with:
+
+``` r
+install.packages("metawho")
+```
+
 You can install the development version of **metawho** from GitHub with:
 
 ``` r
 remotes::install_github("ShixiangWang/metawho")
+```
+
+Visualization feature of **metawho** needs the recent version of **forestmodel**, please run the following commands:
+
+```r
+remotes::install_github("ShixiangWang/forestmodel")
 ```
 
 ## Example

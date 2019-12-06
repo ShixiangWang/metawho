@@ -4,12 +4,18 @@
 \alias{deft_show}
 \title{Show deft result}
 \usage{
-deft_show(deft, element, study_labels = NULL, headings = list(study =
-  ifelse(element == "all", "Study-subgroup", "Study"), n = "N", measure =
-  NULL, ci = "HR (95\% CI)"), trans = base::exp,
+deft_show(
+  deft,
+  element,
+  study_labels = NULL,
+  headings = list(study = ifelse(element == "all", "Study-subgroup", "Study"), n = "N",
+    measure = NULL, ci = "HR (95\% CI)"),
+  trans = base::exp,
   show_model = ifelse(element == "all", FALSE, TRUE),
   show_stats = list(`I^2` = rlang::quo(sprintf("\%0.1f\%\%", I2)), p =
-  rlang::quo(format.pval(QEp, digits = 2))), ...)
+    rlang::quo(format.pval(QEp, digits = 2))),
+  ...
+)
 }
 \arguments{
 \item{deft}{result from \link{deft_do}.}
@@ -22,7 +28,7 @@ deft_show(deft, element, study_labels = NULL, headings = list(study =
 
 \item{trans}{an optional transform function used on the numeric data for plotting the axes}
 
-\item{show_model}{if `TRUE`, show model result, otherwise only show forest plot for studies.}
+\item{show_model}{a logical value, if \code{TRUE}, show model result, otherwise only show forest plots for studies}
 
 \item{show_stats}{a \code{list} of stats to show at the bottom of the forest plot for e.g. heterogeneity}
 
@@ -44,4 +50,7 @@ p1
 
 p2 <- deft_show(res, "subgroup")
 p2
+}
+\author{
+ShixiangWang \href{mailto:w_shixiang@163.com}{w_shixiang@163.com}
 }
